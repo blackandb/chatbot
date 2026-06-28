@@ -1,8 +1,14 @@
 import { IDENTITY_PROMPT } from "./identity";
 import { MISSION_PROMPT } from "./mission";
+import { BEHAVIOR_PROMPT } from "./behavior";
+import { COMMUNICATION_PROMPT } from "./communication";
 
 export const SYSTEM_PROMPT = `
 ${IDENTITY_PROMPT}
 
 ${MISSION_PROMPT}
+
+${BEHAVIOR_PROMPT}
+
+${COMMUNICATION_PROMPT}
 `;
