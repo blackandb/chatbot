@@ -7,13 +7,65 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chat.vercel.ai"),
-  title: "Next.js Chatbot Template",
-  description: "Next.js chatbot template using the AI SDK.",
+  metadataBase: new URL("https://chat.blackandi.com"),
+  title: {
+    default: "BLACK& Intelligence",
+    template: "%s | BLACK& Intelligence",
+  },
+  description:
+    "The official AI intelligence assistant of BLACK&. Explore enterprise AI, strategic intelligence, partnerships, investments and technology opportunities.",
+  keywords: [
+    "BLACK&",
+    "BLACK and I",
+    "BLACK& Intelligence",
+    "Artificial Intelligence",
+    "Enterprise AI",
+    "AI Platform",
+    "Business Intelligence",
+    "Strategic Intelligence",
+    "CAESAREA Technologies",
+    "European Energy Intelligence",
+    "EEIL",
+    "MURABA by BLACK&",
+    "AI Company Builder",
+    "Enterprise Software",
+    "AI Consulting",
+    "Investment Intelligence",
+  ],
+  authors: [{ name: "BLACK&" }],
+  creator: "BLACK&",
+  publisher: "BLACK&",
+  applicationName: "BLACK& Intelligence",
+  alternates: {
+    canonical: "https://chat.blackandi.com",
+  },
+  openGraph: {
+    title: "BLACK& Intelligence",
+    description:
+      "Talk with the official AI intelligence assistant of BLACK&.",
+    url: "https://chat.blackandi.com",
+    siteName: "BLACK& Intelligence",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BLACK& Intelligence",
+    description:
+      "Talk with the official AI intelligence assistant of BLACK&.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport = {
   maximumScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 const geist = Geist({
@@ -28,8 +80,9 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-const LIGHT_THEME_COLOR = "hsl(0 0% 100%)";
-const DARK_THEME_COLOR = "hsl(240deg 10% 3.92%)";
+const LIGHT_THEME_COLOR = "#ffffff";
+const DARK_THEME_COLOR = "#000000";
+
 const THEME_COLOR_SCRIPT = `\
 (function() {
   var html = document.documentElement;
@@ -70,7 +123,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           disableTransitionOnChange
           enableSystem
         >
