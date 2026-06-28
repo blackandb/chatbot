@@ -2,6 +2,12 @@ import { IDENTITY_PROMPT } from "./identity";
 import { MISSION_PROMPT } from "./mission";
 import { BEHAVIOR_PROMPT } from "./behavior";
 import { COMMUNICATION_PROMPT } from "./communication";
+import { ROUTING_PROMPT } from "./routing";
+import { SALES_PROMPT } from "./sales";
+import { REASONING_PROMPT } from "./reasoning";
+import { EXECUTIVE_PROMPT } from "./executive";
+
+import { BLACK_KNOWLEDGE } from "../knowledge/black";
 
 export const SYSTEM_PROMPT = `
 ${IDENTITY_PROMPT}
@@ -11,4 +17,20 @@ ${MISSION_PROMPT}
 ${BEHAVIOR_PROMPT}
 
 ${COMMUNICATION_PROMPT}
+
+${ROUTING_PROMPT}
+
+${SALES_PROMPT}
+
+${REASONING_PROMPT}
+
+${EXECUTIVE_PROMPT}
+
+###############################################################################
+#
+# COMPANY KNOWLEDGE
+#
+###############################################################################
+
+${JSON.stringify(BLACK_KNOWLEDGE, null, 2)}
 `;
