@@ -3,7 +3,6 @@
 import type { UseChatHelpers } from "@ai-sdk/react";
 import { motion } from "framer-motion";
 import { memo } from "react";
-import { suggestions } from "@/lib/constants";
 import type { ChatMessage } from "@/lib/types";
 import { Suggestion } from "../ai-elements/suggestion";
 import type { VisibilityType } from "./visibility-selector";
@@ -14,9 +13,14 @@ type SuggestedActionsProps = {
   selectedVisibilityType: VisibilityType;
 };
 
-function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
-  const suggestedActions = suggestions;
+const suggestedActions = [
+  "What is BLACK&?",
+  "I want to build an AI platform for my company.",
+  "Tell me about CAESAREA Technologies.",
+  "Show me investment and partnership opportunities.",
+];
 
+function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
   return (
     <div
       className="flex w-full gap-2.5 overflow-x-auto pb-1 sm:grid sm:grid-cols-2 sm:overflow-visible"
@@ -30,7 +34,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
       {suggestedActions.map((suggestedAction, index) => (
         <motion.div
           animate={{ opacity: 1, y: 0 }}
-          className="min-w-[200px] shrink-0 sm:min-w-0 sm:shrink"
+          className="min-w-[230px] shrink-0 sm:min-w-0 sm:shrink"
           exit={{ opacity: 0, y: 16 }}
           initial={{ opacity: 0, y: 16 }}
           key={suggestedAction}
@@ -41,7 +45,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
           }}
         >
           <Suggestion
-            className="h-auto w-full whitespace-nowrap rounded-xl border border-border/50 bg-card/30 px-4 py-3 text-left text-[12px] leading-relaxed text-muted-foreground transition-all duration-200 sm:whitespace-normal sm:p-4 sm:text-[13px] hover:-translate-y-0.5 hover:bg-card/60 hover:text-foreground hover:shadow-[var(--shadow-card)]"
+            className="h-auto w-full whitespace-nowrap rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left text-[12px] leading-relaxed text-white/60 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06] hover:text-white sm:whitespace-normal sm:p-4 sm:text-[13px]"
             onClick={(suggestion) => {
               window.history.pushState(
                 {},
