@@ -1,4 +1,3 @@
-```ts
 import { routeQuestion, type KnowledgeRoute } from "./router";
 
 import { BLACK_KNOWLEDGE } from "../knowledge/black";
