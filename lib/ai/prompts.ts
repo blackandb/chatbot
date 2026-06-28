@@ -1,5 +1,6 @@
 import type { Geo } from "@vercel/functions";
 import type { ArtifactKind } from "@/components/chat/artifact";
+import { SYSTEM_PROMPT } from "@/ai/prompts/system";
 
 export const artifactsPrompt = `
 Artifacts is a side panel that displays content alongside the conversation. It supports scripts (code), documents (text), and spreadsheets. Changes appear in real-time.
@@ -44,9 +45,7 @@ CRITICAL RULES:
 - ONLY when the user explicitly asks for suggestions on an existing document
 `;
 
-export const regularPrompt = `You are a helpful assistant. Keep responses concise and direct.
-
-When asked to write, create, or build something, do it immediately. Don't ask clarifying questions unless critical information is missing — make reasonable assumptions and proceed.`;
+export const regularPrompt = SYSTEM_PROMPT;
 
 export type RequestHints = {
   latitude: Geo["latitude"];
@@ -111,6 +110,7 @@ export const updateDocumentPrompt = (
     code: "script",
     sheet: "spreadsheet",
   };
+
   const mediaType = mediaTypes[type] ?? "document";
 
   return `Rewrite the following ${mediaType} based on the given prompt.
