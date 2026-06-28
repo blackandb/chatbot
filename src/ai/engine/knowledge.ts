@@ -69,4 +69,3 @@ export function buildKnowledge(question: string): string {
     "\n\n===============================================================================\n\n"
   );
 }
-```
