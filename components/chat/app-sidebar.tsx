@@ -64,7 +64,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
       method: "DELETE",
     });
 
-    toast.success("All chats deleted");
+    toast.success("All conversations deleted");
   };
 
   return (
@@ -125,7 +125,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton
-                    className="h-9 rounded-lg border border-white/10 bg-white text-[13px] text-black transition-colors duration-150 hover:bg-white/90"
+                    className="h-9 rounded-lg border border-white/15 bg-white/10 text-[13px] text-white transition-colors duration-150 hover:bg-white/15 hover:text-white"
                     onClick={() => {
                       setOpenMobile(false);
                       router.push("/");
