@@ -1,0 +1,8 @@
+import { IDENTITY_PROMPT } from "./identity";
+import { MISSION_PROMPT } from "./mission";
+
+export const SYSTEM_PROMPT = `
+${IDENTITY_PROMPT}
+
+${MISSION_PROMPT}
+`;
