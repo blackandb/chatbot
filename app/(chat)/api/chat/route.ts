@@ -1,4 +1,4 @@
-import { buildKnowledge } from "@/ai/engine/knowledge";
+import { buildKnowledge } from "@/src/ai/engine/knowledge";
 import { geolocation, ipAddress } from "@vercel/functions";
 import {
   convertToModelMessages,
