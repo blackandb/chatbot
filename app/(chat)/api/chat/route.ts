@@ -1,3 +1,4 @@
+import { buildKnowledge } from "@/ai/engine/knowledge";
 import { geolocation, ipAddress } from "@vercel/functions";
 import {
   convertToModelMessages,
@@ -187,13 +188,33 @@ export async function POST(request: Request) {
     const supportsTools = capabilities?.tools === true;
 
     const modelMessages = await convertToModelMessages(uiMessages);
+    const conversationText = uiMessages
+  .filter((message) => message.role === "user")
+  .flatMap((message) =>
+    message.parts
+      .filter((part: any) => part.type === "text")
+      .map((part: any) => part.text)
+  )
+  .join("\n");
+
+const knowledge = buildKnowledge(conversationText);
 
     const stream = createUIMessageStream({
       originalMessages: isToolApprovalFlow ? uiMessages : undefined,
       execute: async ({ writer: dataStream }) => {
         const result = streamText({
           model: getLanguageModel(chatModel),
-          system: systemPrompt({ requestHints, supportsTools }),
+        system: `
+${systemPrompt({ requestHints, supportsTools })}
+
+###############################################################################
+#
+# DYNAMIC KNOWLEDGE
+#
+###############################################################################
+
+${knowledge}
+`,
           messages: modelMessages,
           stopWhen: stepCountIs(5),
           experimental_activeTools:
