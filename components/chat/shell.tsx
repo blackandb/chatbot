@@ -59,6 +59,7 @@ export function ChatShell() {
   stopRef.current = stop;
 
   const prevChatIdRef = useRef(chatId);
+
   useEffect(() => {
     if (prevChatIdRef.current !== chatId) {
       prevChatIdRef.current = chatId;
@@ -71,10 +72,10 @@ export function ChatShell() {
 
   return (
     <>
-      <div className="flex h-dvh w-full flex-row overflow-hidden">
+      <div className="flex h-dvh w-full flex-row overflow-hidden bg-black text-white">
         <div
           className={cn(
-            "flex min-w-0 flex-col bg-sidebar transition-[width] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
+            "flex min-w-0 flex-col bg-black transition-[width] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
             isArtifactVisible ? "w-[40%]" : "w-full"
           )}
         >
@@ -84,7 +85,7 @@ export function ChatShell() {
             selectedVisibilityType={visibilityType}
           />
 
-          <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background md:rounded-tl-[12px] md:border-t md:border-l md:border-border/40">
+          <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-black md:rounded-tl-[18px] md:border-t md:border-l md:border-white/10">
             <Messages
               addToolApprovalResponse={addToolApprovalResponse}
               chatId={chatId}
@@ -107,7 +108,7 @@ export function ChatShell() {
               votes={votes}
             />
 
-            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-3 md:px-4 md:pb-4">
+            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-black px-2 pb-3 md:px-4 md:pb-4">
               {!isReadonly && (
                 <MultimodalInput
                   attachments={attachments}
@@ -175,18 +176,21 @@ export function ChatShell() {
         onOpenChange={setShowCreditCardAlert}
         open={showCreditCardAlert}
       >
-        <AlertDialogContent>
+        <AlertDialogContent className="border-white/10 bg-black text-white">
           <AlertDialogHeader>
-            <AlertDialogTitle>Activate AI Gateway</AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogTitle>Activate BLACK& Intelligence</AlertDialogTitle>
+            <AlertDialogDescription className="text-white/60">
               This application requires{" "}
               {process.env.NODE_ENV === "production" ? "the owner" : "you"} to
-              activate Vercel AI Gateway.
+              activate Vercel AI Gateway before BLACK& Intelligence can respond.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel className="border-white/10 bg-transparent text-white hover:bg-white/10">
+              Cancel
+            </AlertDialogCancel>
             <AlertDialogAction
+              className="bg-white text-black hover:bg-white/90"
               onClick={() => {
                 window.open(
                   "https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card",
