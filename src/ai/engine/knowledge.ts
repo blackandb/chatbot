@@ -14,7 +14,11 @@ export function buildKnowledge(question: string): string {
   const knowledge = new Set<string>();
 
   // Always include company identity
-  knowledge.add(COMPANY);
+  knowledge.add(
+    typeof COMPANY === "string"
+      ? COMPANY
+      : JSON.stringify(COMPANY, null, 2)
+  );
 
   // BLACK&
   if (
@@ -27,7 +31,11 @@ export function buildKnowledge(question: string): string {
     q.includes("enterprise") ||
     q.includes("intelligence")
   ) {
-    knowledge.add(BLACK_KNOWLEDGE);
+    knowledge.add(
+      typeof BLACK_KNOWLEDGE === "string"
+        ? BLACK_KNOWLEDGE
+        : JSON.stringify(BLACK_KNOWLEDGE, null, 2)
+    );
   }
 
   // Services
@@ -38,9 +46,17 @@ export function buildKnowledge(question: string): string {
     q.includes("platform") ||
     q.includes("automation") ||
     q.includes("artificial intelligence") ||
+    q.includes("artificial intelligence") ||
+    q.includes("machine learning") ||
+    q.includes("llm") ||
+    q.includes("agent") ||
     q.includes("ai")
   ) {
-    knowledge.add(SERVICES);
+    knowledge.add(
+      typeof SERVICES === "string"
+        ? SERVICES
+        : JSON.stringify(SERVICES, null, 2)
+    );
   }
 
   // Portfolio
@@ -48,9 +64,14 @@ export function buildKnowledge(question: string): string {
     q.includes("portfolio") ||
     q.includes("companies") ||
     q.includes("company") ||
-    q.includes("ecosystem")
+    q.includes("ecosystem") ||
+    q.includes("subsidiary")
   ) {
-    knowledge.add(PORTFOLIO);
+    knowledge.add(
+      typeof PORTFOLIO === "string"
+        ? PORTFOLIO
+        : JSON.stringify(PORTFOLIO, null, 2)
+    );
   }
 
   // CAESAREA
@@ -65,9 +86,16 @@ export function buildKnowledge(question: string): string {
     q.includes("security") ||
     q.includes("critical infrastructure") ||
     q.includes("critical") ||
-    q.includes("osint")
+    q.includes("osint") ||
+    q.includes("police") ||
+    q.includes("intelligence agency") ||
+    q.includes("national security")
   ) {
-    knowledge.add(CAESAREA);
+    knowledge.add(
+      typeof CAESAREA === "string"
+        ? CAESAREA
+        : JSON.stringify(CAESAREA, null, 2)
+    );
   }
 
   // EEIL
@@ -80,10 +108,18 @@ export function buildKnowledge(question: string): string {
     q.includes("renewable") ||
     q.includes("solar") ||
     q.includes("wind") ||
+    q.includes("hydrogen") ||
+    q.includes("battery") ||
     q.includes("grid") ||
-    q.includes("market")
+    q.includes("market") ||
+    q.includes("utility") ||
+    q.includes("entso-e")
   ) {
-    knowledge.add(EEIL);
+    knowledge.add(
+      typeof EEIL === "string"
+        ? EEIL
+        : JSON.stringify(EEIL, null, 2)
+    );
   }
 
   // MURABA
@@ -97,9 +133,16 @@ export function buildKnowledge(question: string): string {
     q.includes("villas") ||
     q.includes("luxury") ||
     q.includes("hospitality") ||
-    q.includes("resort")
+    q.includes("hotel") ||
+    q.includes("resort") ||
+    q.includes("wellness") ||
+    q.includes("spa")
   ) {
-    knowledge.add(MURABA);
+    knowledge.add(
+      typeof MURABA === "string"
+        ? MURABA
+        : JSON.stringify(MURABA, null, 2)
+    );
   }
 
   // Ventures
@@ -109,10 +152,20 @@ export function buildKnowledge(question: string): string {
     q.includes("investment") ||
     q.includes("investments") ||
     q.includes("capital") ||
-    q.includes("fund")
+    q.includes("fund") ||
+    q.includes("fundraising") ||
+    q.includes("private equity") ||
+    q.includes("venture capital") ||
+    q.includes("startup")
   ) {
-    knowledge.add(VENTURES);
+    knowledge.add(
+      typeof VENTURES === "string"
+        ? VENTURES
+        : JSON.stringify(VENTURES, null, 2)
+    );
   }
 
-  return [...knowledge].join("\n\n============================================================\n\n");
+  return [...knowledge].join(
+    "\n\n===============================================================================\n\n"
+  );
 }
