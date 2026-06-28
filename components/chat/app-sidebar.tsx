@@ -215,9 +215,6 @@ export function AppSidebar({ user }: { user: User | undefined }) {
           <SidebarHistory user={user} />
         </SidebarContent>
 
-        <SidebarFooter className="border-t border-white/10 bg-black pb-3 pt-2">
-          {user && <SidebarUserNav user={user} />}
-        </SidebarFooter>
 
         <SidebarRail />
       </Sidebar>
