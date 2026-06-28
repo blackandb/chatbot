@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         strategy="lazyOnload"
       />
       <DataStreamProvider>
-        <Suspense fallback={<div className="flex h-dvh bg-sidebar" />}>
+        <Suspense fallback={<div className="flex h-dvh bg-black" />}>
           <SidebarShell>{children}</SidebarShell>
         </Suspense>
       </DataStreamProvider>
@@ -32,16 +32,16 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider defaultOpen={!isCollapsed}>
       <AppSidebar user={session?.user} />
-      <SidebarInset>
+      <SidebarInset className="bg-black text-white">
         <Toaster
           position="top-center"
-          theme="system"
+          theme="dark"
           toastOptions={{
             className:
-              "!bg-card !text-foreground !border-border/50 !shadow-[var(--shadow-float)]",
+              "!bg-black !text-white !border-white/10 !shadow-[var(--shadow-float)]",
           }}
         />
-        <Suspense fallback={<div className="flex h-dvh" />}>
+        <Suspense fallback={<div className="flex h-dvh bg-black" />}>
           <ActiveChatProvider>
             <ChatShell />
           </ActiveChatProvider>
