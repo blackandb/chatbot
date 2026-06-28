@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
 
-const quickActions = [
-  "Learn about BLACK&",
-  "Explore CAESAREA",
-  "European Energy Intelligence",
-  "MURABA",
-  "& Ventures",
-];
-
 export const Greeting = () => {
   return (
     <div
@@ -46,22 +38,6 @@ export const Greeting = () => {
         companies, investment opportunities and enterprise intelligence
         platform.
       </motion.p>
-
-      <motion.div
-        animate={{ opacity: 1, y: 0 }}
-        className="mt-10 flex flex-wrap justify-center gap-3"
-        initial={{ opacity: 0, y: 12 }}
-        transition={{ delay: 0.75, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {quickActions.map((item) => (
-          <div
-            className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/70 backdrop-blur transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
-            key={item}
-          >
-            {item}
-          </div>
-        ))}
-      </motion.div>
     </div>
   );
 };
